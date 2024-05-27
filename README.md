@@ -1,8 +1,15 @@
 # proyectoElectivoIII
-repositorio para pruebas de proyecto electivo de especializacion profecional 3
-## para ejecutar front-end
-`cd reactNative`
-Para ejecutar en navegador: `npx expo start --web`
-Para ejecutar en android: `npx expo start --android`
-Para ejecutar en iOS: `npx expo start --ios`
-Para ejecución general: `npx expo start`
+Repositorio para pruebas de proyecto electivo de especializacion profecional 3
+
+## Para ejecutar front-end
+
+1. Ingresar a la carpeta "reactNative": `cd reactNative`
+
+2. Para ejecutar en:
+    - Navegador: `npx expo start --web`
+
+    - Android: `npx expo start --android`
+
+    - iOS: `npx expo start --ios`
+
+    - Ejecución general: `npx expo start`
