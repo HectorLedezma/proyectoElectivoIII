@@ -1,22 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+//import { StatusBar } from 'expo-status-bar';
+//import { StyleSheet, Text, View } from 'react-native';
+import { NativeBaseProvider } from 'native-base';
 import MainPage from './Components/main';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { LinearGradient } from 'react-native-svg';
+
+
 export default function App() {
+  const config = {
+    dependencies: {
+      'linear-gradient': LinearGradient,
+    },
+  };
   return (
-    <>
-      <View>
-        <MainPage/>
-      </View>
-    </>
+    <NativeBaseProvider config={config}>
+      <MainPage/>
+    </NativeBaseProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
