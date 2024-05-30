@@ -10,7 +10,6 @@ import Boton from "../Components/boton";
 
 const Login = () => {
     return(
-
       <Box 
         flex={1} 
         bg={{

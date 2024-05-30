@@ -7,6 +7,7 @@ import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { useState } from 'react';
 import Login from './pages/login';
+import Navi from './routes/Navi';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -38,7 +39,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider config={config}>
-      <Login/>
+      <Navi/>
     </NativeBaseProvider>
   );
 }
