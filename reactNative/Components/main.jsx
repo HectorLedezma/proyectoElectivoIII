@@ -4,6 +4,8 @@ import { FaArrowRight, FaLock, FaUser } from "react-icons/fa";
 
 //import  from "../assets/fonts/RutaCL_Regular.ttf"
 import logo from "../images/Logo.png"
+import Entrada from "./input";
+import Boton from "./boton";
 //import { border } from "native-base/lib/typescript/theme/styled-system";
 
 const MainPage = () => {
@@ -30,33 +32,9 @@ const MainPage = () => {
         <FormControl>
           <Stack space={5}>
             
-            <Stack>
-              <Box borderRadius={"md"} display={"flex"} alignSelf={"center"} shadow={2} bg={"white"} width={"75%"}>
-                <Row display={"flex"}>
-                  <Column w={"8%"} p={2}><FaUser/></Column>
-                  <Column w={"92%"}><Input variant="unstyled" w="100%" borderStyle={"none"} type="text" fontFamily={'fuenteRegular'} p={2} placeholder="Username" />  </Column>
-                </Row>
-              </Box>
-            </Stack>
-            
-            <Stack>
-              <Box borderRadius={"md"} display={"flex"} alignSelf={"center"} shadow={2} bg={"white"} width={"75%"}>
-                <Row display={"flex"}>
-                  <Column w={"8%"} p={2}><FaLock /></Column>
-                  <Column w={"92%"}><Input variant="unstyled" w="100%" borderStyle={"none"} type="password" fontFamily={'fuenteRegular'} p={2} placeholder="Contraseña" />  </Column>
-                </Row>
-              </Box>
-            </Stack>
-            <Stack >
-              <Box w={"75%"} display={"flex"} alignSelf={"center"}>
-                <Button bg={"#008d0f"} borderRadius={"md"} borderColor={"white"} borderWidth={3}>
-                  <Row display={"flex"}>
-                    <Column><Text color={"white"} fontFamily={'fuenteRegular'} fontSize={"2xl"}>Iniciar sesión</Text></Column>
-                    <Column p={2}><FaArrowRight color={"white"} size={"17"}/></Column>
-                  </Row>
-                </Button>
-              </Box>
-            </Stack>
+            <Entrada icon={<FaUser/>} type="text" placeholder="usuario"/>
+            <Entrada icon={<FaLock />} type="password" placeholder="contraseña"/>
+            <Boton/>
           </Stack>
         </FormControl>
       </Box>
