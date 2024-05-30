@@ -33,7 +33,7 @@ const Login = () => {
             
             <Entrada icon={<FaUser/>} type="text" placeholder="usuario"/>
             <Entrada icon={<FaLock />} type="password" placeholder="contraseña"/>
-            <Boton/>
+            <Boton tipo="normal"/>
           </Stack>
         </FormControl>
       </Box>
