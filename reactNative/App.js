@@ -1,11 +1,12 @@
 //import { StatusBar } from 'expo-status-bar';
 //import { StyleSheet, Text, View } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
-import MainPage from './Components/main';
+//import MainPage from './Components/main';
 
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { useState } from 'react';
+import Login from './pages/login';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -37,7 +38,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider config={config}>
-      <MainPage/>
+      <Login/>
     </NativeBaseProvider>
   );
 }
