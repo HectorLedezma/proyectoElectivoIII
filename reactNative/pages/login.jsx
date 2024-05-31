@@ -8,7 +8,7 @@ import Entrada from "../Components/input";
 import Boton from "../Components/boton";
 //import { border } from "native-base/lib/typescript/theme/styled-system";
 
-const Login = () => {
+const Login = ({ navigation }) => {
     return(
       <Box 
         flex={1} 
@@ -32,8 +32,24 @@ const Login = () => {
           <Stack space={5}>
             
             <Entrada icon={<FaUser/>} type="text" placeholder="usuario"/>
-            <Entrada icon={<FaLock />} type="password" placeholder="contraseña"/>
+
+            <Entrada 
+                icon={<FaLock />} //icono de la entrada de texto
+                type="password" //tipo de la entrada de texto; password = ****** ; text = holaXD
+                placeholder="contraseña"// texto que se muestra en el input en blanco
+            />
+
             <Boton tipo="normal" texto="Iniciar sesión" dir="izq"/>
+            
+            <Boton 
+                navi={navigation} //parámetro de navegación, se define en cada pagina
+                to="Register" // pagina de destino al presionar el botón
+                tipo="normal" // color del botón
+                texto="Crear cuenta" // texto del botón
+                dir="der" // dirección del icono de "flecha"
+            />
+
+
           </Stack>
         </FormControl>
       </Box>
