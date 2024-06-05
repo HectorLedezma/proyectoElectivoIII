@@ -47,6 +47,8 @@ const Login = ({ navigation }) => {
                 tipo="normal" // color del botón
                 texto="Crear cuenta" // texto del botón
                 dir="der" // dirección del icono de "flecha"
+                fontSize="2xl" //tamaño del texto
+                w={"75%"} // tamaño del boton
             />
 
 

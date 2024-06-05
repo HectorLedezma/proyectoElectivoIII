@@ -14,7 +14,7 @@ function Boton(props){
     const direccion ={//valores de la propiedad dir
         'izq':[//flecha hacia la izquierda
                 <Column key={"text"}>
-                    <Text color={"white"} fontFamily={'fuenteRegular'} fontSize={"2xl"}>
+                    <Text color={"white"} fontFamily={'fuenteRegular'} fontSize={props.fontSize}>
                         {props.texto}{/* Propiedad texto: define el texto del botón */}
                     </Text>
                 </Column>,
@@ -32,7 +32,7 @@ function Boton(props){
 
     return(
         <Stack >
-            <Box w={"75%"} display={"flex"} alignSelf={"center"}>
+            <Box w={props.w} display={"flex"} alignSelf={"center"}>
             <Button onPress={() => {
                 props.navi.navigate(props.to);//Propiedad to: define a que pagina redirigirá el botón
             // Propiedad tipo: define el color del botón
