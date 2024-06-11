@@ -1,3 +1,4 @@
+
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
@@ -17,15 +18,23 @@ export class AuthService {
 
   async validateUser(correo: string, pass: string): Promise<any> {
     const user = await this.redisClient.hgetall(`user:${correo}`);
-    if (user && await bcrypt.compare(pass, user.password)) {
-      const { password, ...result } = user;
-      return result;
+    if (!user || Object.keys(user).length === 0) {
+      return null; // User not found
     }
-    return null;
+    const passwordIsValid = await bcrypt.compare(pass, user.password);
+    if (!passwordIsValid) {
+      return null; // Password does not match
+    }
+    const { password, ...result } = user;
+    return result;
   }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
+  async login(correo: string, pass: string) {
+    const user = await this.validateUser(correo, pass);
+    if (!user) {
+      return { status: 'error', message: 'Invalid credentials' };
+    }
+    const payload = { username: user.correo, sub: user.userId };
     return {
       access_token: this.jwtService.sign(payload),
     };
@@ -41,10 +50,10 @@ export class AuthService {
       password: hashedPassword,
     };
 
-    // Almacenar los datos del usuario en Redis
+    // Store user data in Redis
     await this.redisClient.hmset(`user:${user.correo}`, userData);
 
-    // Verificar si los datos se almacenaron correctamente
+    // Verify if the data was stored correctly
     const storedUser = await this.redisClient.hgetall(`user:${user.correo}`);
     if (storedUser && storedUser.nombre === user.nombre && storedUser.apellido === user.apellido && storedUser.telefono === user.telefono && storedUser.correo === user.correo && storedUser.password === hashedPassword) {
       return { message: 'Usuario registrado exitosamente' };
