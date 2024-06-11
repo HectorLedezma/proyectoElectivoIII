@@ -1,64 +1,49 @@
-import React from 'react';
-import { Box, Text, FormControl, Stack, Input, Button } from 'native-base';
-import { FaUser, FaPhone, FaEnvelope, FaLock } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { Button, TextInput, View } from 'react-native';
 
-const Register = () => {
-  return (
-    <Box 
-      flex={1} 
-      bg={{
-        linearGradient: {
-          colors: ['#181818', '#c0c0c0'],
-          start: [1, 0],
-          end: [1, 1],
+const Register = ({ navigation }) => {
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleRegister = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }}
-      alignItems="center" 
-      justifyContent="center" 
-      padding={"6"}
-    >
-      <Text 
-        fontWeight={"bold"} 
-        fontSize={"6xl"} 
-        color={"white"} 
-        fontFamily={'fuenteAncha'}
-      >
-        Datos del usuario
-      </Text>
-      <FormControl>
-        <Stack space={5}>
-          <FormControl.Label>Nombre</FormControl.Label>
-          <Input 
-            placeholder="Nombre" 
-            InputLeftElement={<FaUser style={{ marginLeft: 10 }} />} 
-          />
-          <FormControl.Label>Apellido</FormControl.Label>
-          <Input 
-            placeholder="Apellido" 
-            InputLeftElement={<FaUser style={{ marginLeft: 10 }} />} 
-          />
-          <FormControl.Label>Teléfono</FormControl.Label>
-          <Input 
-            placeholder="Teléfono" 
-            InputLeftElement={<FaPhone style={{ marginLeft: 10 }} />} 
-          />
-          <FormControl.Label>Correo</FormControl.Label>
-          <Input 
-            placeholder="Correo" 
-            InputLeftElement={<FaEnvelope style={{ marginLeft: 10 }} />} 
-          />
-          <FormControl.Label>Contraseña</FormControl.Label>
-          <Input 
-            placeholder="Contraseña" 
-            type="password" 
-            InputLeftElement={<FaLock style={{ marginLeft: 10 }} />} 
-          />
-          <Button onPress={() => console.log('Crear cuenta')} mt="5">
-            Crear cuenta
-          </Button>
-        </Stack>
-      </FormControl>
-    </Box>
+        body: JSON.stringify({
+          nombre,
+          apellido,
+          telefono,
+          correo,
+          password,
+        }),
+      });
+      const json = await response.json();
+      if (response.status === 201) {
+        console.log('Registration successful:', json);
+        // Navigate to another screen or handle the response
+      } else {
+        console.log('Registration failed:', json.message);
+      }
+    } catch (error) {
+      console.error('Error registering:', error);
+    }
+  };
+
+  return (
+    <View>
+      <TextInput placeholder="Nombre" onChangeText={setNombre} value={nombre} />
+      <TextInput placeholder="Apellido" onChangeText={setApellido} value={apellido} />
+      <TextInput placeholder="Teléfono" onChangeText={setTelefono} value={telefono} />
+      <TextInput placeholder="Correo" onChangeText={setCorreo} value={correo} />
+      <TextInput placeholder="Contraseña" onChangeText={setPassword} value={password} secureTextEntry />
+      <Button title="Registrar" onPress={handleRegister} />
+    </View>
   );
 };
 
