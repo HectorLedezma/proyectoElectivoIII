@@ -6,6 +6,7 @@ const Stack = createNativeStackNavigator();
 import Login from "../pages/login";
 import Test from '../pages/testview';
 import Register from '../pages/register';
+import { Box } from 'native-base';
 
 function Navi(){
     return(

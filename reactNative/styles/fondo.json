@@ -1,0 +1,10 @@
+{
+    "degradado":{
+        "background": "linear-gradient(to bottom, #181818, #c0c0c0)",
+        "display": "flex",
+        "align-items": "center",
+        "justify-content": "center",
+        "padding": "24px",
+        "height":"100%"
+    }
+}
