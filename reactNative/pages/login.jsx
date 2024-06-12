@@ -48,7 +48,7 @@ const Login = ({ navigation }) => {
         color={"white"}
         fontFamily={'fuenteAncha'}
       >BacheApp</Text>
-      <View marginTop={"10em"} paddingBottom={"15em"} w={"75%"}>
+      <View marginTop={"5em"} paddingBottom={"5em"} w={"75%"}>
         <FormControl>
           <Stack space={5}>
             {/*Input con el componente*/}
@@ -57,6 +57,9 @@ const Login = ({ navigation }) => {
 
             {/*Boton con el componente*/}
             <Boton fontSize="lg" dir="izq" tipo="normal" title="Iniciar sesión" onPress={handleLogin}/>
+            <Boton fontSize="lg" dir="der" tipo="alternativo" title="Registrarse" onPress={()=>{
+              navigation.navigate("Register");
+            }}/>
           </Stack>
         </FormControl> 
       </View>

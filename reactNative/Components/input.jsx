@@ -10,7 +10,7 @@ function Entrada(props){
         if(props.type === "password"){
             return eye?"password":"text";
         }else{
-            return "text";
+            return props.type;
         }
     }
     const [text,setText] = useState(show(eye))
@@ -24,12 +24,14 @@ function Entrada(props){
         } 
         } w={"8%"} p={2}>{eye?(<FaEye />):(<FaEyeSlash />)}</Column>,
         'text':<></>,
+        'mail':<></>,
         undefined:<></>
     }
 
     const col = {
         'password':'82%',
         'text':'92%',
+        'mail':'92%',
         undefined:'92%'
     }
 

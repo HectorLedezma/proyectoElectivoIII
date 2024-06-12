@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextInput, View } from 'react-native';
+import Boton from '../Components/boton';
+import { FaLock, FaMailBulk } from 'react-icons/fa';
 
 const Register = ({ navigation }) => {
   const [nombre, setNombre] = useState('');
@@ -36,14 +38,18 @@ const Register = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <TextInput placeholder="Nombre" onChangeText={setNombre} value={nombre} />
-      <TextInput placeholder="Apellido" onChangeText={setApellido} value={apellido} />
-      <TextInput placeholder="Teléfono" onChangeText={setTelefono} value={telefono} />
-      <TextInput placeholder="Correo" onChangeText={setCorreo} value={correo} />
-      <TextInput placeholder="Contraseña" onChangeText={setPassword} value={password} secureTextEntry />
-      <Button title="Registrar" onPress={handleRegister} />
-    </View>
+    <Box style={fondo.degradado}>
+        <View marginTop={"5em"} paddingBottom={"7.5em"} w={"75%"}>
+
+          <TextInput placeholder="Nombre" onChangeText={setNombre} value={nombre} />
+          <TextInput placeholder="Apellido" onChangeText={setApellido} value={apellido} />
+          <TextInput placeholder="Teléfono" onChangeText={setTelefono} value={telefono} />
+          <Entrada icon={<FaMailBulk/>} type="mail" placeholder="Correo" onChangeText={setCorreo} value={correo}/>
+          <Entrada icon={<FaLock/>} type="password" placeholder="Contraseña" onChangeText={setPassword} value={password}/>
+          <Boton fontSize="lg" dir="izq" tipo="normal" title="Registrar" onPress={handleRegister}/>
+        </View>
+    </Box>
+    
   );
 };
 

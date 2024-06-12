@@ -7,6 +7,7 @@ function Boton(props){
     
     const tipo ={//valores de la propiedad tipo
         'normal':'#008d0f',//verde
+        'alternativo':'#0050DD',//azul
         'pare':'#ff0000',//rojo
         'cuidado':'#ffd800'//amarillo
     }
