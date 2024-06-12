@@ -22,7 +22,7 @@ function Entrada(props){
             setEye(!eye);
             setText(show(!eye))
         } 
-        } w={"8%"} p={2}>{eye?(<FaEye />):(<FaEyeSlash />)}</Column>,
+        } w={"7%"} p={2}>{eye?(<FaEye />):(<FaEyeSlash />)}</Column>,
         'text':<></>,
         'mail':<></>,
         undefined:<></>
@@ -39,7 +39,7 @@ function Entrada(props){
     <Stack>
         <Box borderRadius={"md"} display={"flex"} alignSelf={"center"} shadow={2} bg={"white"} width={props.width === undefined?"100%":props.width}>
         <Row display={"flex"}>
-            <Column w={"8%"} p={2}>{props.icon}</Column>
+            <Column w={"7%"} marginRight={"0.5"} p={2}>{props.icon}</Column>
             <Column w={col[props.type]}>
                 <Input variant="unstyled" w="100%" borderStyle={"none"} type={text} fontFamily={'fuenteRegular'} p={2} placeholder={props.placeholder} onChangeText={props.onChangeText} value={props.value}/>  
             </Column>
