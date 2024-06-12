@@ -41,14 +41,14 @@ const Login = ({ navigation }) => {
   return (
     <Box style={fondo.degradado}>
       {/*Formulario con los componentes*/}
-      <Image h={"21%"} w={"47%"} top={1} source={logo} alt="logo"/>
+      <Image size={"2xl"} resizeMode={"contain"} source={logo} alt="logo"/>
       <Text
         fontWeight={"bold"} 
         fontSize={"6xl"} 
         color={"white"}
         fontFamily={'fuenteAncha'}
       >BacheApp</Text>
-      <View marginTop={"5em"} paddingBottom={"5em"} w={"75%"}>
+      <View w={"75%"}>
         <FormControl>
           <Stack space={5}>
             {/*Input con el componente*/}

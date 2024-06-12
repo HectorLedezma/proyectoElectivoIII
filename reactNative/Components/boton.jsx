@@ -40,9 +40,9 @@ function Boton(props){
 
     return(
         <Stack >
-            <Box w={props.w === undefined? "100%": props.w} display={"flex"} alignSelf={"center"}>
+            <Box w={props.w === undefined? "100%": props.w} display={"flex"} alignSelf={"center"} >
             {/**   propiedad  on press debe ser una funcion que ejecutara el boton al ser presionado*/}
-            <Button onPress={props.onPress} bg={tipo[props.tipo]} borderRadius={"md"} borderColor={"white"} borderWidth={3}>
+            <Button p={props.w === undefined? 0 : props.w} onPress={props.onPress} bg={tipo[props.tipo]} borderRadius={"md"} borderColor={"white"} borderWidth={3}>
                 <Row display={"flex"} alignItems={"center"}>
                     {direccion[props.dir]}{/* propiedad dir: define el orden entre el icono y el texto*/}
                 </Row>

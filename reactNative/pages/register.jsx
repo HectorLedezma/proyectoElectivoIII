@@ -44,15 +44,16 @@ const Register = ({ navigation }) => {
 
   return (
     <Box style={fondo.degradado}>
-        <View marginTop={"5em"} paddingBottom={"7.5em"} w={"75%"}>
-          <Image h={"33%"} w={"100%"} source={logo} alt="logo"/>
+        <Image size={"xl"} resizeMode={"contain"} source={logo} alt="logo"/>
+        <View w={"75%"}>
+          
           <Text
             fontWeight={"bold"} 
             fontSize={"6xl"} 
             color={"white"}
             fontFamily={'fuenteAncha'}
           >Registrate</Text>
-          <FormControl paddingBottom={"25vh"}>
+          <FormControl >
             <Stack space={5}>
               
               <Entrada icon={<FaUser/>} type="text" placeholder="Nombre" onChangeText={setNombre} value={nombre}/>
@@ -61,6 +62,9 @@ const Register = ({ navigation }) => {
               <Entrada icon={<IoIosMail/>} type="mail" placeholder="Correo" onChangeText={setCorreo} value={correo}/>
               <Entrada icon={<FaLock/>} type="password" placeholder="Contraseña" onChangeText={setPassword} value={password}/>
               <Boton fontSize="lg" dir="izq" tipo="normal" title="Registrar" onPress={handleRegister}/>
+              <Boton fontSize="lg" dir="der" tipo="normal" title="Volver" onPress={()=>{
+                navigation.navigate("Login");
+              }}/>
             </Stack>
           </FormControl>
           
