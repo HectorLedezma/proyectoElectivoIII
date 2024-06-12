@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { Button, TextInput, View } from 'react-native';
+import { View } from 'react-native';
 import Boton from '../Components/boton';
-import { FaLock, FaMailBulk } from 'react-icons/fa';
+import { FaLock, FaPhone, FaUser } from 'react-icons/fa';
+import { IoIosMail } from "react-icons/io";
+import Entrada from '../Components/input';
+import fondo from "../styles/fondo.json";
+import { Box, FormControl, Image, Stack, Text } from 'native-base';
+import logo from "../images/Logo.png"
 
 const Register = ({ navigation }) => {
   const [nombre, setNombre] = useState('');
@@ -40,13 +45,25 @@ const Register = ({ navigation }) => {
   return (
     <Box style={fondo.degradado}>
         <View marginTop={"5em"} paddingBottom={"7.5em"} w={"75%"}>
-
-          <TextInput placeholder="Nombre" onChangeText={setNombre} value={nombre} />
-          <TextInput placeholder="Apellido" onChangeText={setApellido} value={apellido} />
-          <TextInput placeholder="Teléfono" onChangeText={setTelefono} value={telefono} />
-          <Entrada icon={<FaMailBulk/>} type="mail" placeholder="Correo" onChangeText={setCorreo} value={correo}/>
-          <Entrada icon={<FaLock/>} type="password" placeholder="Contraseña" onChangeText={setPassword} value={password}/>
-          <Boton fontSize="lg" dir="izq" tipo="normal" title="Registrar" onPress={handleRegister}/>
+          <Image h={"33%"} w={"100%"} source={logo} alt="logo"/>
+          <Text
+            fontWeight={"bold"} 
+            fontSize={"6xl"} 
+            color={"white"}
+            fontFamily={'fuenteAncha'}
+          >Registrate</Text>
+          <FormControl paddingBottom={"25vh"}>
+            <Stack space={5}>
+              
+              <Entrada icon={<FaUser/>} type="text" placeholder="Nombre" onChangeText={setNombre} value={nombre}/>
+              <Entrada icon={<FaUser/>} type="text" placeholder="Apellido" onChangeText={setApellido} value={apellido}/>
+              <Entrada icon={<FaPhone/>} type="text" placeholder="Teléfono" onChangeText={setTelefono} value={telefono}/>
+              <Entrada icon={<IoIosMail/>} type="mail" placeholder="Correo" onChangeText={setCorreo} value={correo}/>
+              <Entrada icon={<FaLock/>} type="password" placeholder="Contraseña" onChangeText={setPassword} value={password}/>
+              <Boton fontSize="lg" dir="izq" tipo="normal" title="Registrar" onPress={handleRegister}/>
+            </Stack>
+          </FormControl>
+          
         </View>
     </Box>
     
