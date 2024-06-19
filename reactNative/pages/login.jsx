@@ -7,21 +7,23 @@ import { FaLock, FaUser } from 'react-icons/fa';
 import { Box, FormControl, Image, Stack, Text, View, } from 'native-base';
 
 import fondo from "../styles/fondo.json";
-import { connection } from '../Classes/connection';
+import { connectionLogin } from '../Classes/connection';
 
 
 
 const Login = ({ navigation }) => {
   const [correo, setCorreo] = useState('');
   const [pass, setPass] = useState('');
-
-  const con = new connection();
+  const con = new connectionLogin();
 
   const handleLogin = async () => {
     try {
       const response = await con.handleLogin(correo,pass)
+      
       if(response){
         navigation.navigate("Main")
+      }else{
+        //evento para notificar credenciales no validas
       }
     } catch (error) {
       console.error('Error logging in:', error);
