@@ -1,15 +1,8 @@
 
 
-export class connection{
-    datos = [];
-
-    esperar(t){
-        return new Promise(
-            resolve =>{
-                setTimeout(resolve,t);
-            }
-        )
-    }
+//clase para ingreso de usuario
+export class connectionLogin{
+    
     async handleLogin(correo,pass){
         try {
             const response = await fetch('http://localhost:3000/auth/login', {
@@ -33,6 +26,45 @@ export class connection{
             }
         } catch (error) {
             console.error('Error logging in:', error);
+            return false
+        }
+    }
+}
+
+//Clase para registro de usuario
+export class connectionSignin{
+    async handleRegister(
+        nombre,
+        apellido,
+        telefono,
+        correo,
+        password,
+    ){
+        try {
+            const response = await fetch('http://localhost:3000/auth/register', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nombre,
+                apellido,
+                telefono,
+                correo,
+                password,
+            }),
+        });
+        const json = await response.json();
+        if (response.status === 201) {
+            console.log('Registration successful:', json);
+            // Navigate to another screen or handle the response
+            return true
+        } else {
+            console.log('Registration failed:', json.message);
+            return false
+        }
+        } catch (error) {
+            console.error('Error registering:', error);
             return false
         }
     }
