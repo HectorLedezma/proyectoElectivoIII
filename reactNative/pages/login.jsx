@@ -30,6 +30,7 @@ const Login = ({ navigation }) => {
       if (response.status === 200) {
         console.log('Login successful:', json);
         // Navigate to another screen or store the token
+        navigation.navigate("Main")
       } else {
         console.log('Login failed:', json.message || 'Unknown error');
       }

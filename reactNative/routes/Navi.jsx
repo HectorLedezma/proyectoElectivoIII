@@ -11,7 +11,7 @@ import MainMenu from '../pages/mainMenu';
 function Navi(){
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Main">
+            <Stack.Navigator initialRouteName="Login">
                 <Stack.Screen name="Test" options={{ headerShown: false }}  component={Test} />
                 <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
                 <Stack.Screen name="Register" options={{ headerShown: false }} component={Register} />
