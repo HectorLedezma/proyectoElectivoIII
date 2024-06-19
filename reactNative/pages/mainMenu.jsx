@@ -50,7 +50,7 @@ const MainMenu = () =>{
                     >{user.correo}</Text>
                 </Box>
                 <Box mt={10} mb={5} m={5}>
-                    <Boton fontSize="md" dir="izq" tipo="cuidado" title="Crear reporte" />
+                    <Boton fontSize="md" dir="izq" tipo="normal" title="Crear reporte" />
                 </Box>
                 <Box mt={5} m={5}>
                     <Boton fontSize="md" dir="izq" tipo="normal" title="Ver reportes" />
