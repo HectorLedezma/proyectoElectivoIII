@@ -18,15 +18,17 @@ export class AuthService {
 
   async validateUser(correo: string, pass: string): Promise<any> {
     const user = await this.redisClient.hgetall(`user:${correo}`);
-    if (!user || Object.keys(user).length === 0) {
+    if (!user || Object.keys(user).length === 0 || !user.password) {
+      return null; // User not found or password not set
+    }
+    if (!pass) {
       return null; // User not found
     }
     const passwordIsValid = await bcrypt.compare(pass, user.password);
     if (!passwordIsValid) {
       return null; // Password does not match
     }
-    const { password, ...result } = user;
-    return result;
+    return user;
   }
 
   async login(correo: string, pass: string) {
