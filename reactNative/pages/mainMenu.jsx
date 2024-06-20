@@ -5,19 +5,11 @@ import logo from "../images/Logo.png"
 import Boton from "../Components/boton"
 
 
-const MainMenu = () =>{
-    const [user,setUser] = useState({
-        "nombre":"",
-        "correo":"",
-        "otrosDatos":[]
-    })
+const MainMenu = (props) =>{
+    const [user,setUser] = useState();
     useEffect(()=>{
         //capturar datos de la BD
-        const newUser = {
-            "nombre":"Elver Galarga",
-            "correo":"aquiles.bailoyo@gmail.com",
-            "otrosDatos":[]
-        }
+        const newUser = 
         setUser(newUser);
     });
     return(

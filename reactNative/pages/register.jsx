@@ -7,6 +7,7 @@ import Entrada from '../Components/input';
 import fondo from "../styles/fondo.json";
 import { Box, FormControl, Image, Stack, Text } from 'native-base';
 import logo from "../images/Logo.png"
+import { connectionSignin } from '../Classes/connection';
 
 const Register = ({ navigation }) => {
   const [nombre, setNombre] = useState('');
@@ -14,28 +15,25 @@ const Register = ({ navigation }) => {
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const [password, setPassword] = useState('');
-
+  const con = new connectionSignin();
   const handleRegister = async () => {
     try {
-      const response = await fetch('http://localhost:3000/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          nombre,
-          apellido,
-          telefono,
-          correo,
-          password,
-        }),
-      });
-      const json = await response.json();
-      if (response.status === 201) {
-        console.log('Registration successful:', json);
+      const response = await con.handleRegister(
+        nombre,
+        apellido,
+        telefono,
+        correo,
+        password
+      )
+      
+      if (response) {
+        console.log('Registration successful:');
         // Navigate to another screen or handle the response
+        navigation.navigate("Login")
+
       } else {
-        console.log('Registration failed:', json.message);
+        console.log('Registration failed:');
+        //evento para notificar registro fallido
       }
     } catch (error) {
       console.error('Error registering:', error);
